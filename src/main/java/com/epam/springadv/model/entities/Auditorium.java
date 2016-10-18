@@ -1,20 +1,22 @@
-package com.epam.springadv.model;
+package com.epam.springadv.model.entities;
 
 import javax.persistence.*;
 
 /**
- * Created by Alexey on 16.10.2016.
+ * Created by Alexey on 18.10.2016.
  */
 @Entity
-@Table(name = "MOVIE")
-public class Movie {
+public class Auditorium {
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "TITLE")
+    @Column
     private String title;
+
+    @Column
+    private int capacity;
 
     public Long getId() {
         return id;
@@ -30,5 +32,13 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
