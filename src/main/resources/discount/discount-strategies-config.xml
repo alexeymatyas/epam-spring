@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="discountService" class="com.epam.springadv.services.impl.DiscountServiceImpl">
+        <constructor-arg name="discountStrategies">
+            <list>
+                <bean class="com.epam.springadv.business.discount.BirthdayStrategy">
+                    <constructor-arg name="discount" value="0.05"/>
+                </bean>
+                <bean class="com.epam.springadv.business.discount.EachNTicketStrategy">
+                    <constructor-arg name="discount" value="0.5"/>
+                    <constructor-arg name="freeTicketNumber" value="10"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

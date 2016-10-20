@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Alexey on 17.10.2016.
@@ -43,7 +42,7 @@ public class EventRepositoryTest {
         Event event = new Event();
         event.setMovie(movie);
         event.setAuditorium(mainAuditorium);
-        event.setScheduleTime(new Date());
+        event.setScheduledTime(new Date());
 
         eventRepository.save(event);
 

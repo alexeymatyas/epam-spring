@@ -1,6 +1,8 @@
 package com.epam.springadv.model.entities;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Alexey on 18.10.2016.
@@ -17,6 +19,12 @@ public class User {
 
     @Column
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookings;
+
+    @Column
+    private Date birthday;
 
     public Long getId() {
         return id;
@@ -40,5 +48,21 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

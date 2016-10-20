@@ -2,6 +2,7 @@ package com.epam.springadv.model.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Alexey on 18.10.2016.
@@ -22,7 +23,10 @@ public class Event {
     private Auditorium auditorium;
 
     @Column(name = "scheduled_time")
-    private Date scheduleTime;
+    private Date scheduledTime;
+
+    @OneToMany(mappedBy = "event")
+    private List<Booking> bookings;
 
     public Long getId() {
         return id;
@@ -48,11 +52,19 @@ public class Event {
         this.auditorium = auditorium;
     }
 
-    public Date getScheduleTime() {
-        return scheduleTime;
+    public Date getScheduledTime() {
+        return scheduledTime;
     }
 
-    public void setScheduleTime(Date scheduleTime) {
-        this.scheduleTime = scheduleTime;
+    public void setScheduledTime(Date scheduledTime) {
+        this.scheduledTime = scheduledTime;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

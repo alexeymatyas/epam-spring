@@ -15,8 +15,11 @@ public class Auditorium {
     @Column
     private String title;
 
-    @Column
-    private int capacity;
+    @Column(name = "seats_number")
+    private int seatsNumber;
+
+    @Column(name = "vip_seats")
+    private String vipSeats;
 
     public Long getId() {
         return id;
@@ -34,11 +37,19 @@ public class Auditorium {
         this.title = title;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int getSeatsNumber() {
+        return seatsNumber;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setSeatsNumber(int seatsNumber) {
+        this.seatsNumber = seatsNumber;
+    }
+
+    public String getVipSeats() {
+        return vipSeats;
+    }
+
+    public void setVipSeats(String vipSeats) {
+        this.vipSeats = vipSeats;
     }
 }
