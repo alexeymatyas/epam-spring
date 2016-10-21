@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getAllUsers() {
+        return (List<User>) userRepository.findAll();
+    }
+
+    @Override
     public User getUserById(Long id) {
         return userRepository.findOne(id);
     }
@@ -42,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByName(String name) {
+    public List<User> getUsersByName(String name) {
         return userRepository.findByName(name);
     }
 

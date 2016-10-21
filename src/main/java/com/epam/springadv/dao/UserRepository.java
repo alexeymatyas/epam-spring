@@ -5,6 +5,8 @@ import com.epam.springadv.model.entities.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Alexey on 16.10.2016.
  */
@@ -12,5 +14,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByEmail(String email);
 
-    User findByName(String name);
+    List<User> findByName(String name);
 }

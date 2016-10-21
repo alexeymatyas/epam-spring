@@ -13,11 +13,13 @@ public interface UserService {
 
     void remove(Long userId);
 
+    List<User> getAllUsers();
+
     User getUserById(Long id);
 
     User getUserByEmail(String email);
 
-    User getUserByName(String name);
+    List<User> getUsersByName(String name);
 
     List<Booking> getBookings(Long userId);
 }
