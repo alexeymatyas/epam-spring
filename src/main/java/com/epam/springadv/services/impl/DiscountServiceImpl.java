@@ -22,7 +22,7 @@ public class DiscountServiceImpl implements DiscountService {
     @Override
     public BigDecimal getDiscount(User user, Event event) {
         return discountStrategies.stream().max((o1, o2) ->
-                o1.getDiscount(user, event).compareTo(o2.getDiscount(user, event))).get().getDiscount();
+                o1.getDiscount(user, event).compareTo(o2.getDiscount(user, event))).get().getDiscount(user, event);
     }
 
     public List<DiscountStrategy> getDiscountStrategies() {

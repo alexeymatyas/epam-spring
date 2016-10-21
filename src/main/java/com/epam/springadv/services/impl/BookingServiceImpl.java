@@ -28,7 +28,9 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public BigDecimal getTicketPrice(Event event, List<Integer> seats, User user) {
-        return event.getMovie().getBasePrice().multiply(discountService.getDiscount(user, event));
+        BigDecimal discount = discountService.getDiscount(user, event);
+        return discount.compareTo(BigDecimal.ZERO) > 0 ?
+                event.getMovie().getBasePrice().multiply(discount) : event.getMovie().getBasePrice();
     }
 
     @Override

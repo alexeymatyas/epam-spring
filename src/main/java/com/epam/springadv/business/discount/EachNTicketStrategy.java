@@ -27,6 +27,6 @@ public class EachNTicketStrategy extends DiscountStrategy {
     @Override
     public BigDecimal getDiscount(User user, Event event) {
         List<Booking> userBookings = userService.getBookings(user.getId());
-        return userBookings.size()%freeTicketNumber == 0 ? discount : BigDecimal.ZERO;
+        return !userBookings.isEmpty() && ((userBookings.size()+1) % freeTicketNumber == 0) ? discount : BigDecimal.ZERO;
     }
 }
