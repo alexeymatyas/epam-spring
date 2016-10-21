@@ -18,7 +18,7 @@ import java.util.Date;
  * Created by Alexey on 17.10.2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:application-context.xml")
+@ContextConfiguration(locations = "classpath:spring-config/application-context.xml")
 public class EventRepositoryTest {
     @Autowired
     private MovieRepository movieRepository;

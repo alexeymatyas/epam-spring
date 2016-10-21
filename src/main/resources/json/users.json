@@ -1,0 +1,12 @@
+[
+  {
+    "name": "User 1",
+    "email": "user1@gmail.com",
+    "birthday": "1988-01-01"
+  },
+  {
+    "name": "User 2",
+    "email": "user2@gmail.com",
+    "birthday": "1987-01-01"
+  }
+]

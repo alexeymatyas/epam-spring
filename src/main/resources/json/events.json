@@ -1,0 +1,17 @@
+{
+  "movies": [
+    {
+      "ref_id": 1,
+      "title": "Forrest Gump",
+      "base_price": 100,
+      "rating_id": 2
+    }
+  ],
+  "events": [
+    {
+      "movie_ref_id": 1,
+      "auditorium_id": 1,
+      "scheduled_time": "2016-01-01 19:00:00"
+    }
+  ]
+}

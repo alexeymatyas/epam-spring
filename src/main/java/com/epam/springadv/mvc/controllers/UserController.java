@@ -1,16 +1,17 @@
 package com.epam.springadv.mvc.controllers;
 
 import com.epam.springadv.model.entities.User;
+import com.epam.springadv.services.BookingFacade;
 import com.epam.springadv.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +23,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    BookingFacade bookingFacade;
 
     @RequestMapping("")
     public String listUsers(@ModelAttribute("model") ModelMap model, @RequestParam(value = "email", required = false) String email,
@@ -48,5 +52,24 @@ public class UserController {
         model.addAttribute("user", userService.getUserById(id));
 
         return "user";
+    }
+
+    @GetMapping("upload")
+    public String showUploadForm() {
+        return "users-upload";
+    }
+
+    @PostMapping("upload")
+    public String upload(@RequestParam("file") MultipartFile file,
+                         RedirectAttributes redirectAttributes) {
+        try {
+            bookingFacade.uploadUsers(file.getInputStream());
+        } catch (IOException e) {
+            redirectAttributes.addFlashAttribute("message", "Failure");
+        }
+
+        redirectAttributes.addFlashAttribute("message", "Success");
+
+        return "redirect:/users";
     }
 }

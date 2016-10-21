@@ -21,7 +21,7 @@ import java.util.Date;
  * Created by Alexey on 21.10.2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:application-context.xml")
+@ContextConfiguration(locations = "classpath:spring-config/application-context.xml")
 public class DiscountServiceTest {
     @Autowired
     DiscountService discountService;
