@@ -60,4 +60,12 @@ public class Movie {
     public void setBasePrice(BigDecimal basePrice) {
         this.basePrice = basePrice;
     }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 }

@@ -1,5 +1,7 @@
 package com.epam.springadv.services;
 
+import com.epam.springadv.model.SchedulingException;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -8,4 +10,6 @@ import java.io.InputStream;
  */
 public interface BookingFacade {
     void uploadUsers(InputStream stream) throws IOException;
+
+    void uploadEvents(InputStream stream) throws IOException, SchedulingException;
 }

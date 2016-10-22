@@ -38,7 +38,7 @@ public class DiscountServiceTest {
     @Test
     public void shouldGiveDiscountOnBirthday() {
         Date now = new Date();
-        Event event = eventService.getByName("Forrest Gump").get(0);
+        Event event = eventService.getByMovieName("Forrest Gump").get(0);
         User user = userService.getUserByEmail("matias.alexey@gmail.com");
         user.setBirthday(now);
         event.setScheduledTime(now);
@@ -48,10 +48,10 @@ public class DiscountServiceTest {
 
     @Test
     public void shouldGiveDiscountOnNTicket() {
-        Event event = eventService.getByName("Forrest Gump").get(0);
+        Event event = eventService.getByMovieName("Forrest Gump").get(0);
         User user = userService.getUserByEmail("matias.alexey@gmail.com");
 
-        for(int i=0; i<9; i++) {
+        for(int i=0; i<8; i++) {
             bookingService.bookTicket(event, Arrays.asList(1), user);
         }
 

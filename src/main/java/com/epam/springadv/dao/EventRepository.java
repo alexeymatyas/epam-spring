@@ -13,4 +13,6 @@ public interface EventRepository extends CrudRepository<Event, Long> {
     List<Event> findByMovieIdAndAuditoriumIdAndScheduledTime(Long movieId, Long auditoriumId, Date scheduledTime);
 
     List<Event> findByMovieTitle(String movieTitle);
+
+    List<Event> findByMovieId(Long movieId);
 }

@@ -1,6 +1,7 @@
 package com.epam.springadv.services.impl;
 
 import com.epam.springadv.dao.EventRepository;
+import com.epam.springadv.dao.MovieRepository;
 import com.epam.springadv.model.SchedulingException;
 import com.epam.springadv.model.entities.Auditorium;
 import com.epam.springadv.model.entities.Event;
@@ -19,6 +20,9 @@ import java.util.List;
 public class EventServiceImpl implements EventService {
     @Autowired
     EventRepository eventRepository;
+
+    @Autowired
+    MovieRepository movieRepository;
 
     @Override
     public void create(Movie movie, Auditorium auditorium, Date scheduledTime) throws SchedulingException {
@@ -41,12 +45,22 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<Event> getByName(String name) {
+    public List<Event> getByMovieName(String name) {
         return eventRepository.findByMovieTitle(name);
     }
 
     @Override
-    public List<Event> getAll() {
+    public List<Event> getByMovieId(Long id) {
+        return eventRepository.findByMovieId(id);
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        return (List<Movie>) movieRepository.findAll();
+    }
+
+    @Override
+    public List<Event> getAllEvents() {
         return (List<Event>) eventRepository.findAll();
     }
 }

@@ -29,4 +29,16 @@
         <property name="maxInMemorySize" value="50000"/>
     </bean>
 
+    <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="location">
+            <value>/WEB-INF/classes/spring-config/pdf-views.xml</value>
+        </property>
+    </bean>
+
+    <bean id="simpleMappingExceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error"/>
+        <property name="exceptionAttribute" value="exception"/>
+    </bean>
+
 </beans>

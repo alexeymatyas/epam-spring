@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * Created by Alexey on 17.10.2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "spring-config/classpath:application-context.xml")
+@ContextConfiguration(locations = "classpath:spring-config/application-context.xml")
 public class MovieRepositoryTest {
     @Autowired
     private MovieRepository movieRepository;

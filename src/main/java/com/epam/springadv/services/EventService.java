@@ -16,7 +16,11 @@ public interface EventService {
 
     void remove(Long eventId);
 
-    List<Event> getByName(String name);
+    List<Event> getByMovieName(String name);
 
-    List<Event> getAll();
+    List<Event> getByMovieId(Long id);
+
+    List<Movie> getAllMovies();
+
+    List<Event> getAllEvents();
 }

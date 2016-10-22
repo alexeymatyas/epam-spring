@@ -54,6 +54,13 @@ public class UserController {
         return "user";
     }
 
+    @RequestMapping(value = "{userId}/bookings", headers = "Accept=application/pdf")
+    public String showUserBookings(Model model, @PathVariable Long userId) {
+        model.addAttribute("bookings", userService.getBookings(userId));
+
+        return "user-bookings";
+    }
+
     @GetMapping("upload")
     public String showUploadForm() {
         return "users-upload";
@@ -61,13 +68,8 @@ public class UserController {
 
     @PostMapping("upload")
     public String upload(@RequestParam("file") MultipartFile file,
-                         RedirectAttributes redirectAttributes) {
-        try {
-            bookingFacade.uploadUsers(file.getInputStream());
-        } catch (IOException e) {
-            redirectAttributes.addFlashAttribute("message", "Failure");
-        }
-
+                         RedirectAttributes redirectAttributes) throws Exception {
+        bookingFacade.uploadUsers(file.getInputStream());
         redirectAttributes.addFlashAttribute("message", "Success");
 
         return "redirect:/users";
