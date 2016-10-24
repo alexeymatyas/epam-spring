@@ -1,4 +1,4 @@
-package com.epam.springadv.mvc.views;
+package com.epam.springadv.views;
 
 import com.epam.springadv.model.entities.Booking;
 import com.lowagie.text.Document;

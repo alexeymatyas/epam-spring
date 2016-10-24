@@ -1,11 +1,11 @@
-package com.epam.springadv.dao;
+package com.epam.springadv.model.dao;
 
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;
-import com.epam.springadv.services.BookingService;
-import com.epam.springadv.services.DiscountService;
-import com.epam.springadv.services.EventService;
-import com.epam.springadv.services.UserService;
+import com.epam.springadv.model.services.BookingService;
+import com.epam.springadv.model.services.DiscountService;
+import com.epam.springadv.model.services.EventService;
+import com.epam.springadv.model.services.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

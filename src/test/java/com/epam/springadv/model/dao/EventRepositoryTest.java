@@ -1,4 +1,4 @@
-package com.epam.springadv.dao;
+package com.epam.springadv.model.dao;
 
 import com.epam.springadv.model.Rating;
 import com.epam.springadv.model.entities.Auditorium;

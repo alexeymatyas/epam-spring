@@ -1,11 +1,11 @@
-package com.epam.springadv.services.impl;
+package com.epam.springadv.model.services.impl;
 
-import com.epam.springadv.dao.BookingRepository;
+import com.epam.springadv.model.dao.BookingRepository;
 import com.epam.springadv.model.entities.Booking;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;
-import com.epam.springadv.services.BookingService;
-import com.epam.springadv.services.DiscountService;
+import com.epam.springadv.model.services.BookingService;
+import com.epam.springadv.model.services.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

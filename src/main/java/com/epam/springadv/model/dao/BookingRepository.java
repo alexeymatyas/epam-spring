@@ -1,7 +1,6 @@
-package com.epam.springadv.dao;
+package com.epam.springadv.model.dao;
 
 import com.epam.springadv.model.entities.Booking;
-import com.epam.springadv.model.entities.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

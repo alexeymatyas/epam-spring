@@ -1,4 +1,4 @@
-package com.epam.springadv.services;
+package com.epam.springadv.model.services;
 
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;

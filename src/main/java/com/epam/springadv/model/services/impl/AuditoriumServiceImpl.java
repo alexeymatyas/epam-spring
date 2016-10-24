@@ -1,8 +1,8 @@
-package com.epam.springadv.services.impl;
+package com.epam.springadv.model.services.impl;
 
-import com.epam.springadv.dao.AuditoriumRepository;
+import com.epam.springadv.model.dao.AuditoriumRepository;
 import com.epam.springadv.model.entities.Auditorium;
-import com.epam.springadv.services.AuditoriumService;
+import com.epam.springadv.model.services.AuditoriumService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

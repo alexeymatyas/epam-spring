@@ -1,12 +1,12 @@
-package com.epam.springadv.services.impl;
+package com.epam.springadv.model.services.impl;
 
-import com.epam.springadv.dao.EventRepository;
-import com.epam.springadv.dao.MovieRepository;
+import com.epam.springadv.model.dao.EventRepository;
+import com.epam.springadv.model.dao.MovieRepository;
 import com.epam.springadv.model.SchedulingException;
 import com.epam.springadv.model.entities.Auditorium;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.Movie;
-import com.epam.springadv.services.EventService;
+import com.epam.springadv.model.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

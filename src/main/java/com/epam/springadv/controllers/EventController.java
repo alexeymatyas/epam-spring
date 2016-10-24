@@ -1,20 +1,13 @@
-package com.epam.springadv.mvc.controllers;
+package com.epam.springadv.controllers;
 
-import com.epam.springadv.model.SchedulingException;
-import com.epam.springadv.model.entities.User;
-import com.epam.springadv.services.BookingFacade;
-import com.epam.springadv.services.EventService;
-import com.epam.springadv.services.UserService;
+import com.epam.springadv.model.services.BookingFacade;
+import com.epam.springadv.model.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Alexey on 21.10.2016.

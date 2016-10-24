@@ -1,10 +1,9 @@
-package com.epam.springadv.services.impl;
+package com.epam.springadv.model.services.impl;
 
 import com.epam.springadv.business.discount.DiscountStrategy;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;
-import com.epam.springadv.services.DiscountService;
-import org.springframework.stereotype.Service;
+import com.epam.springadv.model.services.DiscountService;
 
 import java.math.BigDecimal;
 import java.util.List;

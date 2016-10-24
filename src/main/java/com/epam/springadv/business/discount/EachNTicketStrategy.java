@@ -3,8 +3,7 @@ package com.epam.springadv.business.discount;
 import com.epam.springadv.model.entities.Booking;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;
-import com.epam.springadv.services.BookingService;
-import com.epam.springadv.services.UserService;
+import com.epam.springadv.model.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;

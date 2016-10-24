@@ -1,17 +1,16 @@
-package com.epam.springadv.services.impl;
+package com.epam.springadv.model.services.impl;
 
-import com.epam.springadv.dao.AuditoriumRepository;
-import com.epam.springadv.dao.MovieRepository;
-import com.epam.springadv.dao.UserRepository;
+import com.epam.springadv.model.dao.AuditoriumRepository;
+import com.epam.springadv.model.dao.MovieRepository;
+import com.epam.springadv.model.dao.UserRepository;
 import com.epam.springadv.model.SchedulingException;
 import com.epam.springadv.model.entities.Auditorium;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.Movie;
 import com.epam.springadv.model.entities.User;
 import com.epam.springadv.model.json.MovieDeserializer;
-import com.epam.springadv.services.BookingFacade;
-import com.epam.springadv.services.EventService;
-import com.epam.springadv.services.UserService;
+import com.epam.springadv.model.services.BookingFacade;
+import com.epam.springadv.model.services.EventService;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;

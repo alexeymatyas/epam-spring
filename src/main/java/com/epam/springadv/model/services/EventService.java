@@ -1,4 +1,4 @@
-package com.epam.springadv.services;
+package com.epam.springadv.model.services;
 
 import com.epam.springadv.model.SchedulingException;
 import com.epam.springadv.model.entities.Auditorium;

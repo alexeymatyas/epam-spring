@@ -15,9 +15,9 @@
 
     <import resource="discount/discount-strategies-config.xml"/>
 
-    <context:component-scan base-package="com.epam.springadv.services"/>
+    <context:component-scan base-package="com.epam.springadv.model.services"/>
 
-    <jpa:repositories base-package="com.epam.springadv.dao"/>
+    <jpa:repositories base-package="com.epam.springadv.model.dao"/>
 
     <jdbc:embedded-database id="movietheaterdb" type="H2">
         <jdbc:script location="classpath:db/create.sql" />

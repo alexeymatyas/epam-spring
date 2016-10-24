@@ -4,6 +4,6 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-    <bean id="user-bookings" class="com.epam.springadv.mvc.views.UserBookingsListPdf"/>
+    <bean id="user-bookings" class="com.epam.springadv.views.UserBookingsListPdf"/>
 
 </beans>

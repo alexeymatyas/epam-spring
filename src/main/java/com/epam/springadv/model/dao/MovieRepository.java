@@ -1,4 +1,4 @@
-package com.epam.springadv.dao;
+package com.epam.springadv.model.dao;
 
 import com.epam.springadv.model.entities.Movie;
 import org.springframework.data.repository.CrudRepository;

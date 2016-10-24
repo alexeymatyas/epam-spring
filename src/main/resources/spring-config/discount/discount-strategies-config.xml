@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-    <bean id="discountService" class="com.epam.springadv.services.impl.DiscountServiceImpl">
+    <bean id="discountService" class="com.epam.springadv.model.services.impl.DiscountServiceImpl">
         <constructor-arg name="discountStrategies">
             <list>
                 <bean class="com.epam.springadv.business.discount.BirthdayStrategy">
