@@ -1,8 +1,10 @@
 CREATE TABLE user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
+    password VARCHAR(255),
     email VARCHAR(255),
-    birthday DATE
+    birthday DATE,
+    roles VARCHAR(255) DEFAULT 'ROLE_REGISTERED_USER'
 );
 
 CREATE TABLE rating (

@@ -16,8 +16,8 @@
   	<#if model["events"]??>
         <#list model["events"] as event>
             <tr>
-                <td>${event.auditorium.title}</td>
-                <td>${event.scheduledTime}</td>
+                <td><a href="/events/${event.id}/bookings">${event.auditorium.title}</a></td>
+                <td><a href="/events/${event.id}/bookings">${event.scheduledTime}</a></td>
             </tr>
         </#list>
     <#else>

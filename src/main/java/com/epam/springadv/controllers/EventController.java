@@ -1,6 +1,7 @@
 package com.epam.springadv.controllers;
 
 import com.epam.springadv.model.services.BookingFacade;
+import com.epam.springadv.model.services.BookingService;
 import com.epam.springadv.model.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,9 @@ public class EventController {
     EventService eventService;
 
     @Autowired
+    BookingService bookingService;
+
+    @Autowired
     BookingFacade bookingFacade;
 
     @RequestMapping("movies")
@@ -33,6 +37,13 @@ public class EventController {
         model.addAttribute("events", eventService.getByMovieId(movieId));
 
         return "movie-events";
+    }
+
+    @RequestMapping("{eventId}/bookings")
+    public String listEventBookings(@ModelAttribute("model") ModelMap model, @PathVariable Long eventId) {
+        model.addAttribute("bookings", bookingService.getBookingsForEvent(eventId));
+
+        return "event-bookings";
     }
 
     @GetMapping("upload")

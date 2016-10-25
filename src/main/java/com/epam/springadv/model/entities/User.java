@@ -18,6 +18,9 @@ public class User {
     private String name;
 
     @Column
+    private String password;
+
+    @Column
     private String email;
 
     @OneToMany(mappedBy = "user")
@@ -25,6 +28,9 @@ public class User {
 
     @Column
     private Date birthday;
+
+    @Column
+    private String roles;
 
     public Long getId() {
         return id;
@@ -40,6 +46,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -64,5 +78,13 @@ public class User {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }
