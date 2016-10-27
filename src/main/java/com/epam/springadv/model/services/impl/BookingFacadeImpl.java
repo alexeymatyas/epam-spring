@@ -1,5 +1,6 @@
 package com.epam.springadv.model.services.impl;
 
+import com.epam.springadv.model.InsufficientAccountBalanceException;
 import com.epam.springadv.model.dao.AuditoriumRepository;
 import com.epam.springadv.model.dao.MovieRepository;
 import com.epam.springadv.model.dao.UserRepository;
@@ -10,7 +11,9 @@ import com.epam.springadv.model.entities.Movie;
 import com.epam.springadv.model.entities.User;
 import com.epam.springadv.model.json.MovieDeserializer;
 import com.epam.springadv.model.services.BookingFacade;
+import com.epam.springadv.model.services.BookingService;
 import com.epam.springadv.model.services.EventService;
+import com.epam.springadv.model.services.UserAccountService;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
@@ -23,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +47,12 @@ public class BookingFacadeImpl implements BookingFacade {
 
     @Autowired
     EventService eventService;
+
+    @Autowired
+    UserAccountService userAccountService;
+
+    @Autowired
+    BookingService bookingService;
 
     @Override
     public void uploadUsers(InputStream stream) throws IOException {
@@ -82,5 +92,15 @@ public class BookingFacadeImpl implements BookingFacade {
                 eventService.create(movie, event.getAuditorium(), event.getScheduledTime());
             }
         }
+    }
+
+    @Override
+    public void refillUserAccount(Long userId, BigDecimal amount) {
+        userAccountService.refillUserAccount(userId, amount);
+    }
+
+    @Override
+    public void bookTickets(Event event, List<Integer> seats, User user) throws InsufficientAccountBalanceException {
+        bookingService.bookTickets(event, seats, user);
     }
 }

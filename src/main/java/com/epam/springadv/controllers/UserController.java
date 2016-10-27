@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,6 +59,13 @@ public class UserController {
         model.addAttribute("bookings", userService.getBookings(userId));
 
         return "user-bookings";
+    }
+
+    @PostMapping(value = "{userId}/refill-account", params = {"refillAmount"})
+    public String refillUserAccount(@PathVariable Long userId, @RequestParam BigDecimal refillAmount) {
+        bookingFacade.refillUserAccount(userId, refillAmount);
+
+        return "redirect:/users/" + userId;
     }
 
     @GetMapping("upload")

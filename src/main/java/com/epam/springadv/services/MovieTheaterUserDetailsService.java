@@ -25,12 +25,6 @@ public class MovieTheaterUserDetailsService implements UserDetailsService {
         if(user == null) {
             throw new UsernameNotFoundException("User with email " + email + " was not found");
         }
-
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        for(String role: user.getRoles().split(", ")) {
-            authorities.add(new SimpleGrantedAuthority(role));
-        }
-
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+        return user;
     }
 }

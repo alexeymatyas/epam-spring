@@ -1,5 +1,6 @@
 package com.epam.springadv.model.dao;
 
+import com.epam.springadv.model.InsufficientAccountBalanceException;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;
 import com.epam.springadv.model.services.BookingService;
@@ -47,12 +48,12 @@ public class DiscountServiceTest {
     }
 
     @Test
-    public void shouldGiveDiscountOnNTicket() {
+    public void shouldGiveDiscountOnNTicket() throws InsufficientAccountBalanceException {
         Event event = eventService.getByMovieName("Forrest Gump").get(0);
         User user = userService.getUserByEmail("matias.alexey@gmail.com");
 
         for(int i=0; i<8; i++) {
-            bookingService.bookTicket(event, Arrays.asList(1), user);
+            bookingService.bookTickets(event, Arrays.asList(1), user);
         }
 
         Assert.assertTrue(discountService.getDiscount(user, event).compareTo(BigDecimal.ZERO) > 0);

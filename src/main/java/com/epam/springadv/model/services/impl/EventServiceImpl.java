@@ -25,6 +25,11 @@ public class EventServiceImpl implements EventService {
     MovieRepository movieRepository;
 
     @Override
+    public Event getById(Long eventId) {
+        return eventRepository.findOne(eventId);
+    }
+
+    @Override
     public void create(Movie movie, Auditorium auditorium, Date scheduledTime) throws SchedulingException {
         List<Event> sameTimeEvents = eventRepository.findByMovieIdAndAuditoriumIdAndScheduledTime(movie.getId(), auditorium.getId(), scheduledTime);
         if(sameTimeEvents.size() > 0) {

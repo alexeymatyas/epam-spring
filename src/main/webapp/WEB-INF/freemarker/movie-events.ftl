@@ -12,12 +12,16 @@
   	<tr>
   		<th>Auditorium</th>
   		<th>Date and time</th>
+  		<th>Book ticket</th>
+  		<th>Bookings</th>
   	</tr>
   	<#if model["events"]??>
         <#list model["events"] as event>
             <tr>
-                <td><a href="/events/${event.id}/bookings">${event.auditorium.title}</a></td>
-                <td><a href="/events/${event.id}/bookings">${event.scheduledTime}</a></td>
+                <td>${event.auditorium.title}</td>
+                <td>${event.scheduledTime}</td>
+                <td><a href="/events/${event.id}/booking">Book tickets</a></td>
+                <td><a href="/events/${event.id}/bookings">Bookings</a></td>
             </tr>
         </#list>
     <#else>

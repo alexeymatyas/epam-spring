@@ -22,6 +22,18 @@
             <td>Birthday</td>
             <td>${model["user"].birthday}</td>
         </tr>
+        <tr>
+            <td rowspan="2" valign="top">Account balance</td>
+            <td>${model["user"].account.balance}</td>
+        </tr>
+        <tr>
+            <td>
+                <form action="/users/${model["user"].id}/refill-account" method="post">
+                    <input type="text" placeholder="Specify refill amount" name="refillAmount"/>
+                    <input type="submit" value="Refill"/>
+                </form>
+            </td>
+        </tr>
       </table>
   <#else>
       User doesn't exist

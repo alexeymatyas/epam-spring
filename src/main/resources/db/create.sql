@@ -7,6 +7,12 @@ CREATE TABLE user (
     roles VARCHAR(255) DEFAULT 'ROLE_REGISTERED_USER'
 );
 
+CREATE TABLE user_account (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    balance DECIMAL(10, 2)
+);
+
 CREATE TABLE rating (
     id BIGINT PRIMARY KEY,
     code VARCHAR(255)

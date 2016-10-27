@@ -1,11 +1,13 @@
 package com.epam.springadv.model.services.impl;
 
+import com.epam.springadv.model.InsufficientAccountBalanceException;
 import com.epam.springadv.model.dao.BookingRepository;
 import com.epam.springadv.model.entities.Booking;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;
 import com.epam.springadv.model.services.BookingService;
 import com.epam.springadv.model.services.DiscountService;
+import com.epam.springadv.model.services.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -26,6 +28,9 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     BookingRepository bookingRepository;
 
+    @Autowired
+    UserAccountService userAccountService;
+
     @Override
     public BigDecimal getTicketPrice(Event event, List<Integer> seats, User user) {
         BigDecimal discount = discountService.getDiscount(user, event);
@@ -34,15 +39,19 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void bookTicket(Event event, List<Integer> seats, User user) {
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = InsufficientAccountBalanceException.class)
+    public void bookTickets(Event event, List<Integer> seats, User user) throws InsufficientAccountBalanceException {
         for(Integer seat: seats) {
+            BigDecimal ticketPrice = getTicketPrice(event, seats, user);
+
+            userAccountService.chargeUserAccount(user.getId(), ticketPrice);
+
             Booking booking = new Booking();
             booking.setEvent(event);
             booking.setUser(user);
             booking.setSeatNumber(seat);
             booking.setBookingTime(new Date());
-            booking.setPrice(getTicketPrice(event, seats, user));
+            booking.setPrice(ticketPrice);
             bookingRepository.save(booking);
         }
     }
