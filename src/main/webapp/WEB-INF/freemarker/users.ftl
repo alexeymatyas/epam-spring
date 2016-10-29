@@ -14,8 +14,8 @@
   		<th>Email</th>
   		<th>Birthday</th>
   	</tr>
-  	<#if model["users"]??>
-        <#list model["users"] as user>
+  	<#if users??>
+        <#list users as user>
             <tr>
                 <td><a href="/users/${user.id}">${user.name}</a></td>
                 <td>${user.email}</td>

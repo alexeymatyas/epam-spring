@@ -37,21 +37,21 @@ public class EventController {
     BookingFacade bookingFacade;
 
     @RequestMapping("movies")
-    public String listMovies(@ModelAttribute("model") ModelMap model) {
+    public String listMovies(Model model) {
         model.addAttribute("movies", eventService.getAllMovies());
 
         return "movies";
     }
 
     @RequestMapping("movies/{movieId}")
-    public String listMovieEvents(@ModelAttribute("model") ModelMap model, @PathVariable Long movieId) {
+    public String listMovieEvents(Model model, @PathVariable Long movieId) {
         model.addAttribute("events", eventService.getByMovieId(movieId));
 
         return "movie-events";
     }
 
     @RequestMapping("{eventId}/bookings")
-    public String listEventBookings(@ModelAttribute("model") ModelMap model, @PathVariable Long eventId) {
+    public String listEventBookings(Model model, @PathVariable Long eventId) {
         model.addAttribute("bookings", bookingService.getBookingsForEvent(eventId));
 
         return "event-bookings";

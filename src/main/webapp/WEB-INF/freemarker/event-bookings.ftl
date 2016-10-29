@@ -15,8 +15,8 @@
   		<th>Seat number</th>
   		<th>Price</th>
   	</tr>
-  	<#if model["bookings"]??>
-        <#list model["bookings"] as booking>
+  	<#if bookings??>
+        <#list bookings as booking>
             <tr>
                 <td>${booking.user.email}</td>
                 <td>${booking.bookingTime}</td>

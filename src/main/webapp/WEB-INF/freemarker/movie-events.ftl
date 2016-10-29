@@ -15,8 +15,8 @@
   		<th>Book ticket</th>
   		<th>Bookings</th>
   	</tr>
-  	<#if model["events"]??>
-        <#list model["events"] as event>
+  	<#if events??>
+        <#list events as event>
             <tr>
                 <td>${event.auditorium.title}</td>
                 <td>${event.scheduledTime}</td>

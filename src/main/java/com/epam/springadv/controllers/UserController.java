@@ -28,7 +28,7 @@ public class UserController {
     BookingFacade bookingFacade;
 
     @RequestMapping("")
-    public String listUsers(@ModelAttribute("model") ModelMap model, @RequestParam(value = "email", required = false) String email,
+    public String listUsers(Model model, @RequestParam(value = "email", required = false) String email,
                             @RequestParam(value = "name", required = false) String name) {
         List<User> users = null;
         if(email != null) {
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @RequestMapping("{id}")
-    public String showUser(@ModelAttribute("model") ModelMap model, @PathVariable("id") Long id) {
+    public String showUser(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.getUserById(id));
 
         return "user";

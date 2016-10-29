@@ -14,8 +14,8 @@
   		<th>Rating</th>
   		<th>Price</th>
   	</tr>
-  	<#if model["movies"]??>
-        <#list model["movies"] as movie>
+  	<#if movies??>
+        <#list movies as movie>
             <tr>
                 <td><a href="/events/movies/${movie.id}">${movie.title}</a></td>
                 <td>${movie.rating}</td>
