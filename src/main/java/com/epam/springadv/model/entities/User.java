@@ -5,12 +5,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlType;
 import java.util.*;
 
 /**
  * Created by Alexey on 18.10.2016.
  */
 @Entity
+@XmlType
 public class User implements UserDetails {
     @Id
     @Column

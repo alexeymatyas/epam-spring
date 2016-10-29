@@ -1,6 +1,8 @@
 package com.epam.springadv.model.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import java.util.List;
  * Created by Alexey on 18.10.2016.
  */
 @Entity
+@XmlType
 public class Event {
     @Id
     @Column

@@ -153,7 +153,41 @@
 				</configuration>
 			</plugin>
 
-			<!--<plugin>-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.2</version>
+				<executions>
+					<execution>
+						<id>schemagen</id>
+                        <goals>
+                            <goal>schemagen</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <sources>
+                                <source>src/main/java/com/epam/springadv/model/entities</source>
+                            </sources>
+                            <outputDirectory>src/gen/resources/xsd</outputDirectory>
+                        </configuration>
+					</execution>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/gen/resources/xsd/schema1.xsd</source>
+                            </sources>
+                            <packageName>com.epam.springadv.wsclient.schema</packageName>
+                            <outputDirectory>src/gen/java</outputDirectory>
+                        </configuration>
+                    </execution>
+				</executions>
+			</plugin>
+
+            <!--<plugin>-->
 				<!--<groupId>org.apache.tomcat.maven</groupId>-->
 				<!--<artifactId>tomcat7-maven-plugin</artifactId>-->
 				<!--<version>2.2</version>-->
