@@ -5,6 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import java.util.*;
 
@@ -106,6 +107,7 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    @XmlTransient
     public UserAccount getAccount() {
         return account;
     }
@@ -114,6 +116,7 @@ public class User implements UserDetails {
         this.account = account;
     }
 
+    @XmlTransient
     public List<Booking> getBookings() {
         return bookings;
     }

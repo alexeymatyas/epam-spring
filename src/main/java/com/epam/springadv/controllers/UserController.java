@@ -3,10 +3,10 @@ package com.epam.springadv.controllers;
 import com.epam.springadv.model.entities.User;
 import com.epam.springadv.model.services.BookingFacade;
 import com.epam.springadv.model.services.UserService;
+import com.epam.springadv.wsclient.MovieTheaterWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -27,6 +27,9 @@ public class UserController {
     @Autowired
     BookingFacade bookingFacade;
 
+    @Autowired
+    MovieTheaterWebService movieTheaterWebService;
+
     @RequestMapping("")
     public String listUsers(Model model, @RequestParam(value = "email", required = false) String email,
                             @RequestParam(value = "name", required = false) String name) {
@@ -43,6 +46,13 @@ public class UserController {
         }
 
         model.addAttribute("users", users);
+
+        return "users";
+    }
+
+    @RequestMapping("ws")
+    public String listUsersThroughWs(Model model) {
+        model.addAttribute("users", movieTheaterWebService.getUsers());
 
         return "users";
     }

@@ -1,7 +1,7 @@
 package com.epam.springadv.model.entities;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 import java.util.List;
@@ -63,6 +63,7 @@ public class Event {
         this.scheduledTime = scheduledTime;
     }
 
+    @XmlTransient
     public List<Booking> getBookings() {
         return bookings;
     }

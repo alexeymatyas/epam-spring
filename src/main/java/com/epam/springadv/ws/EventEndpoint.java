@@ -1,10 +1,13 @@
 package com.epam.springadv.ws;
 
 import com.epam.springadv.model.services.EventService;
+import com.epam.springadv.ws.schema.GetMovieScheduleRequest;
+import com.epam.springadv.ws.schema.GetMovieScheduleResponse;
 import com.epam.springadv.ws.schema.GetMoviesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 /**
@@ -24,5 +27,14 @@ public class EventEndpoint {
         response.setMovies(eventService.getAllMovies());
 
         return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMovieScheduleRequest")
+    @ResponsePayload
+    public GetMovieScheduleResponse getMovieSchedule(@RequestPayload GetMovieScheduleRequest request) {
+        GetMovieScheduleResponse response = new GetMovieScheduleResponse();
+        response.setEvents(eventService.getByMovieId(request.getMovieId()));
+
+        return  response;
     }
 }

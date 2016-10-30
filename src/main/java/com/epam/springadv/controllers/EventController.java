@@ -61,6 +61,13 @@ public class EventController {
         return "movie-events";
     }
 
+    @RequestMapping("movies-ws/{movieId}")
+    public String listMovieEventsThroughWs(Model model, @PathVariable Long movieId) {
+        model.addAttribute("events", movieTheaterWebService.getMovieSchedule(movieId));
+
+        return "movie-events";
+    }
+
     @RequestMapping("{eventId}/bookings")
     public String listEventBookings(Model model, @PathVariable Long eventId) {
         model.addAttribute("bookings", bookingService.getBookingsForEvent(eventId));
