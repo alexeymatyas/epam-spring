@@ -1,5 +1,7 @@
 package com.epam.springadv.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
@@ -26,6 +28,7 @@ public class Movie {
     private BigDecimal basePrice;
 
     @OneToMany(mappedBy = "movie")
+    @JsonIgnore
     private List<Event> events;
 
     public Long getId() {

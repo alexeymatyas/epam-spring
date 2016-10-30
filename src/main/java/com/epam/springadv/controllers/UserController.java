@@ -64,7 +64,7 @@ public class UserController {
         return "user";
     }
 
-    @RequestMapping(value = "{userId}/bookings", headers = "Accept=application/pdf")
+    @RequestMapping(value = "{userId}/bookings")
     public String showUserBookings(Model model, @PathVariable Long userId) {
         model.addAttribute("bookings", userService.getBookings(userId));
 

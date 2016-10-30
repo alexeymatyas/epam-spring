@@ -3,7 +3,7 @@
 <body>
 <div id="header">
 <H2>
-	Event bookings
+	User bookings
 </H2>
 </div>
 
@@ -11,6 +11,7 @@
   <table class="datatable">
   	<tr>
   		<th>User</th>
+  		<th>Booking time</th>
   		<th>Seat number</th>
   		<th>Price</th>
   	</tr>
@@ -18,6 +19,7 @@
         <#list bookings as booking>
             <tr>
                 <td>${booking.user.email}</td>
+                <td>${booking.bookingTime}</td>
                 <td>${booking.seatNumber}</td>
                 <td>${booking.price}</td>
             </tr>

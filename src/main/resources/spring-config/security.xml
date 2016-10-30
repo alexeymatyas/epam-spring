@@ -9,6 +9,7 @@
 
     <http pattern="/login*" security="none"/>
     <http pattern="/ws*" security="none"/>
+    <!--<http pattern="/events/rest/*/booking" security="none"/>-->
 
     <http>
         <intercept-url pattern="/events/*/bookings" access="hasRole('BOOKING_MANAGER')" />
@@ -20,6 +21,7 @@
                     password-parameter="password" />
         <csrf disabled="true"/>
         <remember-me remember-me-parameter="remember-me"/>
+        <http-basic/>
         <logout logout-url="/logout" logout-success-url="/login?logout" />
     </http>
 

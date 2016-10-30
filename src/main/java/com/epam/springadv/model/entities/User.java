@@ -1,5 +1,7 @@
 package com.epam.springadv.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,9 +32,11 @@ public class User implements UserDetails {
     private String email;
 
     @OneToOne(mappedBy = "user")
+    @JsonIgnore
     private UserAccount account;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Booking> bookings;
 
     @Column
@@ -42,6 +46,7 @@ public class User implements UserDetails {
     private String roles;
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
         for(String role: roles.split(", ")) {

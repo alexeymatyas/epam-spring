@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Alexey on 22.10.2016.
  */
-public class UserBookingsListPdf extends AbstractPdfView {
+public class BookingsListPdf extends AbstractPdfView {
     @Override
     protected void buildPdfDocument(Map model, Document document, PdfWriter pdfWriter,
                                     HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)

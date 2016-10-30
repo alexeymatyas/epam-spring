@@ -1,5 +1,8 @@
 package com.epam.springadv.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -29,6 +32,7 @@ public class Event {
     private Date scheduledTime;
 
     @OneToMany(mappedBy = "event")
+    @JsonIgnore
     private List<Booking> bookings;
 
     public Long getId() {
@@ -64,10 +68,12 @@ public class Event {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Booking> getBookings() {
         return bookings;
     }
 
+    @JsonIgnore
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }

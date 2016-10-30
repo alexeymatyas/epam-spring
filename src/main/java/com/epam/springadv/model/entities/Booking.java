@@ -1,5 +1,7 @@
 package com.epam.springadv.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;

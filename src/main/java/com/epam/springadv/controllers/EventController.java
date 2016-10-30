@@ -1,11 +1,15 @@
 package com.epam.springadv.controllers;
 
 import com.epam.springadv.model.InsufficientAccountBalanceException;
+import com.epam.springadv.model.entities.Booking;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.User;
 import com.epam.springadv.model.services.BookingFacade;
 import com.epam.springadv.model.services.BookingService;
 import com.epam.springadv.model.services.EventService;
+import com.epam.springadv.rest.BookTicketsRequest;
+import com.epam.springadv.rest.BookTicketsResponse;
+import com.epam.springadv.restclient.MovieTheaterRestService;
 import com.epam.springadv.wsclient.MovieTheaterWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -40,6 +44,9 @@ public class EventController {
     @Autowired
     private MovieTheaterWebService movieTheaterWebService;
 
+    @Autowired
+    private MovieTheaterRestService movieTheaterRestService;
+
     @RequestMapping("movies")
     public String listMovies(Model model) {
         model.addAttribute("movies", eventService.getAllMovies());
@@ -68,11 +75,24 @@ public class EventController {
         return "movie-events";
     }
 
-    @RequestMapping("{eventId}/bookings")
+    @RequestMapping(value = "{eventId}/bookings", method = RequestMethod.GET)
     public String listEventBookings(Model model, @PathVariable Long eventId) {
         model.addAttribute("bookings", bookingService.getBookingsForEvent(eventId));
 
         return "event-bookings";
+    }
+
+    @RequestMapping(value = "{eventId}/bookings-rest", method = RequestMethod.GET)
+    public String listEventBookingsThroughRest(Model model, @PathVariable Long eventId) {
+        model.addAttribute("bookings", movieTheaterRestService.getEventBookings(eventId));
+
+        return "event-bookings";
+    }
+
+    @RequestMapping(value = "rest/{eventId}/bookings", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Booking> listEventBookings(@PathVariable Long eventId) {
+        return bookingService.getBookingsForEvent(eventId);
     }
 
     @GetMapping("{eventId}/booking")
@@ -98,6 +118,26 @@ public class EventController {
         }
 
         return "redirect:/events/" + event.getId() + "/booking";
+    }
+
+    @RequestMapping(value = "rest/{eventId}/booking", method = RequestMethod.POST)
+    @ResponseBody
+    public BookTicketsResponse bookTickets(@RequestBody BookTicketsRequest request, Authentication auth) {
+        BookTicketsResponse response = new BookTicketsResponse();
+        Event event = eventService.getById(request.getEventId());
+        try {
+            List<Integer> seatNumbers = new ArrayList<>();
+            for(Integer seat: request.getSeats()) {
+                seatNumbers.add(seat);
+            }
+            bookingFacade.bookTickets(event, seatNumbers, (User) auth.getPrincipal());
+            response.setStatus("ok");
+        } catch (InsufficientAccountBalanceException e) {
+            response.setStatus("error");
+            response.setErrorMessage("Not enough money!");
+        }
+
+        return response;
     }
 
     @GetMapping("upload")
