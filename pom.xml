@@ -56,6 +56,22 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.10.4.RELEASE</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>2.3.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.6.3</version>
+        </dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -131,7 +147,7 @@
         <dependency>
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5-20081211</version>
+            <version>3.0.20100224</version>
         </dependency>
     </dependencies>
 
@@ -139,6 +155,10 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+            <resource>
+				<directory>src/gen/resources</directory>
 				<filtering>false</filtering>
 			</resource>
 		</resources>
@@ -167,6 +187,7 @@
                         <configuration>
                             <sources>
                                 <source>src/main/java/com/epam/springadv/model/entities</source>
+                                <source>src/main/java/com/epam/springadv/ws/schema</source>
                             </sources>
                             <outputDirectory>src/gen/resources/xsd</outputDirectory>
                         </configuration>
@@ -180,6 +201,9 @@
                             <sources>
                                 <source>src/gen/resources/xsd/schema1.xsd</source>
                             </sources>
+                            <xjbSources>
+                                <xjbSource>src/main/resources/jaxb/config.xjb</xjbSource>
+                            </xjbSources>
                             <packageName>com.epam.springadv.wsclient.schema</packageName>
                             <outputDirectory>src/gen/java</outputDirectory>
                         </configuration>

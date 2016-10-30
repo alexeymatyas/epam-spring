@@ -1,8 +1,7 @@
 package com.epam.springadv.model.entities;
 
-import com.epam.springadv.model.Rating;
-
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -61,6 +60,7 @@ public class Movie {
         this.basePrice = basePrice;
     }
 
+    @XmlTransient
     public List<Event> getEvents() {
         return events;
     }

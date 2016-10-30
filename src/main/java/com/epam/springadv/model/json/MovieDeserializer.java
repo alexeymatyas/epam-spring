@@ -1,10 +1,9 @@
 package com.epam.springadv.model.json;
 
-import com.epam.springadv.model.Rating;
+import com.epam.springadv.model.entities.Rating;
 import com.epam.springadv.model.entities.Auditorium;
 import com.epam.springadv.model.entities.Event;
 import com.epam.springadv.model.entities.Movie;
-import com.epam.springadv.model.entities.User;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -31,7 +30,7 @@ public class MovieDeserializer extends StdDeserializer<Movie> {
     }
 
     @Override
-    public Movie deserialize(JsonParser jp, DeserializationContext ctx) throws IOException, JsonProcessingException {
+    public Movie deserialize(JsonParser jp, DeserializationContext ctx) throws IOException {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         JsonNode node = jp.getCodec().readTree(jp);

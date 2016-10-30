@@ -1,6 +1,6 @@
 package com.epam.springadv.model.dao;
 
-import com.epam.springadv.model.Rating;
+import com.epam.springadv.model.entities.Rating;
 import com.epam.springadv.model.entities.Movie;
 import org.junit.Assert;
 import org.junit.Test;

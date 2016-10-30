@@ -6,6 +6,7 @@ import com.epam.springadv.model.entities.User;
 import com.epam.springadv.model.services.BookingFacade;
 import com.epam.springadv.model.services.BookingService;
 import com.epam.springadv.model.services.EventService;
+import com.epam.springadv.wsclient.MovieTheaterWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -28,17 +29,27 @@ import java.util.List;
 @RequestMapping("events")
 public class EventController {
     @Autowired
-    EventService eventService;
+    private EventService eventService;
 
     @Autowired
-    BookingService bookingService;
+    private BookingService bookingService;
 
     @Autowired
-    BookingFacade bookingFacade;
+    private BookingFacade bookingFacade;
+
+    @Autowired
+    private MovieTheaterWebService movieTheaterWebService;
 
     @RequestMapping("movies")
     public String listMovies(Model model) {
         model.addAttribute("movies", eventService.getAllMovies());
+
+        return "movies";
+    }
+
+    @RequestMapping("movies-ws")
+    public String listMoviesThroughWs(Model model) {
+        model.addAttribute("movies", movieTheaterWebService.getMovies());
 
         return "movies";
     }

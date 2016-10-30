@@ -1,4 +1,4 @@
-package com.epam.springadv.model;
+package com.epam.springadv.model.entities;
 
 /**
  * Created by Alexey on 18.10.2016.
