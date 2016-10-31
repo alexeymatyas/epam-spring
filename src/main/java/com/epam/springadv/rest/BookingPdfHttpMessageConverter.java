@@ -64,12 +64,14 @@ public class BookingPdfHttpMessageConverter implements HttpMessageConverter<List
                 table.addCell(booking.getPrice().toString());
             }
 
-            writer.add(table);
+            document.add(table);
+            document.close();
             writer.flush();
 
             httpOutputMessage.getHeaders().setContentType(MediaType.APPLICATION_PDF);
             httpOutputMessage.getHeaders().setContentLength(os.size());
             os.writeTo(httpOutputMessage.getBody());
+            httpOutputMessage.getBody().flush();
         } catch (DocumentException e) {
             e.printStackTrace();
         }
